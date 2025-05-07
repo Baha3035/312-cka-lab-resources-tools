@@ -1,0 +1,18 @@
+# Task 9: Priority Classes - Setup
+# Create the pod that needs priority
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ops-controller
+  namespace: operations
+spec:
+  containers:
+  - name: controller
+    image: nginx:stable
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"

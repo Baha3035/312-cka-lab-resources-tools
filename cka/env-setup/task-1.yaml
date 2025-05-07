@@ -1,0 +1,33 @@
+# Task 1: Horizontal Pod Autoscaler - Setup
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stellar-api
+  namespace: mission-control
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stellar-api
+  template:
+    metadata:
+      labels:
+        app: stellar-api
+    spec:
+      containers:
+      - name: stellar-api
+        image: nginx:stable
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+
+# Enable the metrics-server if not already installed
+# kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+# Wait for the metrics-server to be ready
+# kubectl wait --for=condition=available --timeout=300s deployment/metrics-server -n kube-system

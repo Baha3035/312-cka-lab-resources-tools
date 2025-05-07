@@ -1,0 +1,17 @@
+# Task 6: Logging with Sidecar - Setup
+# Create the pod that needs a sidecar
+apiVersion: v1
+kind: Pod
+metadata:
+  name: log-watcher
+  namespace: monitoring
+spec:
+  containers:
+  - name: main-app
+    image: nginx:stable
+    volumeMounts:
+    - name: log-volume
+      mountPath: /var/log/app
+  volumes:
+  - name: log-volume
+    emptyDir: {}

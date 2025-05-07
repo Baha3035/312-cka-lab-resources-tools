@@ -1,0 +1,98 @@
+{
+    "task-1": {
+        "score": 4,
+        "sub-task-1": 33,
+        "sub-task-2": 33,
+        "sub-task-3": 34
+    },
+    "task-2": {
+        "score": 4,
+        "sub-task-1": 100
+    },
+    "task-3": {
+        "score": 8,
+        "sub-task-1": 100
+    },
+    "task-4": {
+        "score": 4,
+        "sub-task-1": 25,
+        "sub-task-2": 25,
+        "sub-task-3": 25,
+        "sub-task-4": 25
+    },
+    "task-5": {
+        "score": 8,
+        "sub-task-1": 25,
+        "sub-task-2": 25,
+        "sub-task-3": 25,
+        "sub-task-4": 25
+    },
+    "task-6": {
+        "score": 4,
+        "sub-task-1": 100
+    },
+    "task-7": {
+        "score": 4,
+        "sub-task-1": 25,
+        "sub-task-2": 25,
+        "sub-task-3": 25,
+        "sub-task-4": 25
+    },
+    "task-8": {
+        "score": 8,
+        "sub-task-1": 25,
+        "sub-task-2": 25,
+        "sub-task-3": 25,
+        "sub-task-4": 25
+    },
+    "task-9": {
+        "score": 4,
+        "sub-task-1": 50,
+        "sub-task-2": 50
+    },
+    "task-10": {
+        "score": 8,
+        "sub-task-1": 50,
+        "sub-task-2": 50
+    },
+    "task-11": {
+        "score": 8,
+        "sub-task-1": 12,
+        "sub-task-2": 12,
+        "sub-task-3": 12,
+        "sub-task-4": 12,
+        "sub-task-5": 12,
+        "sub-task-6": 12,
+        "sub-task-7": 12,
+        "sub-task-8": 16
+    },
+    "task-12": {
+        "score": 8,
+        "sub-task-1": 32,
+        "sub-task-2": 32,
+        "sub-task-3": 36
+    },
+    "task-13": {
+        "score": 8,
+        "sub-task-1": 50,
+        "sub-task-2": 50
+    },
+    "task-14": {
+        "score": 8,
+        "sub-task-1": 33,
+        "sub-task-2": 33,
+        "sub-task-3": 34
+    },
+    "task-15": {
+        "score": 8,
+        "sub-task-1": 50,
+        "sub-task-2": 50
+    },
+    "task-16": {
+        "score": 4,
+        "sub-task-1": 25,
+        "sub-task-2": 25,
+        "sub-task-3": 25,
+        "sub-task-4": 25
+    }
+}

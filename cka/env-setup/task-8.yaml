@@ -1,0 +1,21 @@
+# Task 8: Service Exposure - Setup
+# Create the deployment with container that needs port configuration
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app
+  namespace: web-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:stable
+        # Port configuration missing here

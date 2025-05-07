@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mission-control
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: comms
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: web-apps
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: data-science
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: web-frontend
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: operations
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitops
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: databases
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gateway-migration
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: microservices
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-mgmt
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: security

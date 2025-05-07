@@ -1,0 +1,26 @@
+# Task 5: Resource Management - Setup
+# Create the Wordpress deployment with resource issues
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-main
+  namespace: web-apps
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      initContainers:
+      - name: init-wp-config
+        image: busybox
+        command: ['sh', '-c', 'echo "Initializing WordPress configs..."']
+      containers:
+      - name: wordpress
+        image: wordpress:5.7
+        ports:
+        - containerPort: 80

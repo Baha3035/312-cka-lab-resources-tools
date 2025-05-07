@@ -1,0 +1,14 @@
+# Task 11: Persistent Volume Recovery - Setup
+# Create the PV
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db-pv-001
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/db-data

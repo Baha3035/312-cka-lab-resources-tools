@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-prereq-host
+  namespace: kube-system
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu:22.04
+    command: ["sleep", "infinity"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: host-modules
+      mountPath: /lib/modules
+    - name: host-sys
+      mountPath: /sys
+    - name: host-proc
+      mountPath: /proc
+  volumes:
+  - name: host-modules
+    hostPath:
+      path: /lib/modules
+  - name: host-sys
+    hostPath:
+      path: /sys
+  - name: host-proc
+    hostPath:
+      path: /proc
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-prereq-instructions
+  namespace: kube-system
+data:
+  instructions.txt: |
+    Task 3: Kubernetes Installation Prerequisites
+    
+    You need to prepare this system for Kubernetes installation:
+    
+    1. Install cri-dockerd using the apt package manager
+    2. Enable and start the cri-dockerd service
+    3. Set the following sysctl parameters:
+       - net.bridge.bridge-nf-call-iptables = 1
+       - net.bridge.bridge-nf-call-ip6tables = 1
+       - net.ipv4.ip_forward = 1
+       - net.ipv6.conf.all.forwarding = 1
+       - net.netfilter.nf_conntrack_max = 131072
+    
+    Notes:
+    - You have root access to this system
+    - You can use apt to install packages
+    - You may need to load required kernel modules

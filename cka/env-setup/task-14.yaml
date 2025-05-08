@@ -1,10 +1,58 @@
-# Task 14: Cluster Recovery - Setup
-# This task requires deliberate misconfiguration of the API server
-# We can simulate this by creating a broken custom resource
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cluster-recovery-host
+  namespace: kube-system
+spec:
+  containers:
+  - name: cluster-recovery
+    image: ubuntu:22.04
+    command: ["sleep", "infinity"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: host-kubelet
+      mountPath: /var/lib/kubelet
+    - name: host-kubernetes
+      mountPath: /etc/kubernetes
+    - name: host-systemd
+      mountPath: /run/systemd
+    - name: host-etcd
+      mountPath: /var/lib/etcd
+    - name: host-bin
+      mountPath: /usr/local/bin
+  volumes:
+  - name: host-kubelet
+    emptyDir: {}
+  - name: host-kubernetes
+    emptyDir: {}
+  - name: host-systemd
+    emptyDir: {}
+  - name: host-etcd
+    emptyDir: {}
+  - name: host-bin
+    emptyDir: {}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: broken-apiserver-settings
+  name: cluster-recovery-instructions
   namespace: kube-system
 data:
-  simulation-info: "This ConfigMap simulates a broken API server configuration. The actual API server would be configured incorrectly with etcd endpoints pointing to the wrong location."
+  instructions.txt: |
+    Task 14: Cluster Recovery
+    
+    A single-node Kubernetes cluster was migrated to a new machine but is now malfunctioning.
+    
+    Task:
+    1. Investigate why the cluster is broken
+    2. Fix the cluster, knowing that:
+       - The decommissioned cluster was using external etcd
+       - The API server might not be properly configured
+    3. Ensure the node and essential pods are healthy
+    
+    Notes:
+    - Check the API server configuration
+    - Examine etcd connectivity
+    - Verify Kubernetes certificates
+    - Cluster components are managed by systemd

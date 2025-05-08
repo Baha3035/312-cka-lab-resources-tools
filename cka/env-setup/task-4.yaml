@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cni-test-host
+  namespace: kube-system
+spec:
+  containers:
+  - name: cni-test
+    image: ubuntu:22.04
+    command: ["sleep", "infinity"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: host-modules
+      mountPath: /lib/modules
+    - name: host-cni
+      mountPath: /etc/cni/net.d
+    - name: host-kubeconfig
+      mountPath: /etc/kubernetes/admin.conf
+      readOnly: true
+    env:
+    - name: KUBECONFIG
+      value: "/etc/kubernetes/admin.conf"
+  volumes:
+  - name: host-modules
+    hostPath:
+      path: /lib/modules
+  - name: host-cni
+    emptyDir: {}
+  - name: host-kubeconfig
+    hostPath:
+      path: /etc/kubernetes/admin.conf
+      type: File
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cni-test-instructions
+  namespace: kube-system
+data:
+  instructions.txt: |
+    Task 4: CNI Plugin Installation
+    
+    You have a newly initialized Kubernetes cluster without networking capabilities.
+    
+    Tasks:
+    1. Install the Calico CNI plugin to enable pod-to-pod communication
+    2. Verify Calico is working by checking pod connectivity
+    3. Ensure Network Policies can be applied
+    
+    Notes:
+    - The kubectl binary is already configured
+    - You may need to install additional tools
+    - You can verify the installation by creating test pods
